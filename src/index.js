@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', function(){
         document.querySelector('#render').innerHTML += 
         `
         <tr>
-            <td><textarea onclick="hcopy(this)">${hname}</textarea></td>
-            <td><textarea onclick="hcopy(this)">${hmd5}</textarea></td>
-            <td><textarea onclick="hcopy(this)">${hasha1}</textarea></td>
-            <td><textarea onclick="hcopy(this)">${hasha256}</textarea></td>
+            <td>${hname}</td>
+            <td>${hmd5}</td>
+            <td>${hasha1}</td>
+            <td>${hasha256}</td>
         </tr>
         `;
     }
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function(){
             .then(response => showHash(response.data[0].attributes.meaningful_name, response.data[0].attributes.md5,response.data[0].attributes.sha1, response.data[0].attributes.sha256))
             
         } catch(err){
-            showHash("Not Found: "+hash+"</span>","no data❗","no data❗", "no data❗");
+            showHash("Not Found: "+hash+"</span>","no data (!)","no data (!)", "no data (!)");
         }
 
         document.body.style.cursor='default';

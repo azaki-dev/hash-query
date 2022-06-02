@@ -6,16 +6,21 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="index.css"/>
-      <title>Hash to SHA256</title>
+      <title>Hash Query</title>
+      <script>
+         function hcopy(e){
+          navigator.clipboard.writeText(e.value);
+        }
+      </script>
   </head>
 
   <body>
     <div>
       <center>
-          <h1>MD5 to SHA256</h1>
-          <input id="vtkey" placeholder="VirusTotal Key">
+          <h1>Hash Query</h1>
+          <input id="vtkey" placeholder="VirusTotal Key"> <button id="save">Save</button>
           <input id="ihash"type="text" placeholder="Enter a Hash"/>
-          <input id="submit" type="submit"/>
+          <input id="submit" type="submit" name="send"/>
           <input id="loadcsv" type="file" accept=".csv"></input>
           <label id="load" for="loadcsv">.CSV</label>
       </center>  
@@ -24,9 +29,10 @@
       <table>
         <thead>
           <tr>
-            <th>Hash Entry</th>
             <th>Name</th>
-            <th>SHA256</th>
+            <th>MD5</th>
+            <th>SHA-1</th>
+            <th>SHA-256</th>
           </tr>
         </thead>
         <tbody id="render">

@@ -1,7 +1,7 @@
 # dependencies
 /node_modules
 package-lock.json
-web-rep-win32-x64
+hashcon-win32-x64
 
 .DS_Store
 .env

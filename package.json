@@ -1,11 +1,11 @@
 {
-  "name": "hashcon",
-  "version": "0.0.1",
+  "name": "hashquery",
+  "version": "0.0.2",
   "description": "Simple client for virus total hash conversion",
   "main": "src/main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager ../hashcon --platform-win32"
+    "build": "electron-packager ../hash-con --platform-win32"
   },
   "author": "Emerson Araujo",
   "license": "ISC",

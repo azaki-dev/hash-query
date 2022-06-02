@@ -1,12 +1,15 @@
 document.addEventListener('DOMContentLoaded', function(){
+    let virustotalKey = "vtkey" in localStorage?localStorage.getItem("vtkey"):"";
+    document.getElementById("vtkey").value = virustotalKey;
 
-    async function showHash(hashentry,name,hash256){
+    async function showHash(hname,hmd5,hasha1,hasha256){    
         document.querySelector('#render').innerHTML += 
         `
         <tr>
-            <td>${hashentry}</td>
-            <td>${name}</td>
-            <td>${hash256}</td>
+            <td><textarea onclick="hcopy(this)">${hname}</textarea></td>
+            <td><textarea onclick="hcopy(this)">${hmd5}</textarea></td>
+            <td><textarea onclick="hcopy(this)">${hasha1}</textarea></td>
+            <td><textarea onclick="hcopy(this)">${hasha256}</textarea></td>
         </tr>
         `;
     }
@@ -27,10 +30,10 @@ document.addEventListener('DOMContentLoaded', function(){
         try{
             let response = await fetch(`https://www.virustotal.com/api/v3/search?query=${hash}`, options)
             .then(response => response.json())
-            .then(response => showHash(hash,response.data[0].attributes.meaningful_name,response.data[0].attributes.sha256, response.data[0].attributes.meaningful_name))
+            .then(response => showHash(response.data[0].attributes.meaningful_name, response.data[0].attributes.md5,response.data[0].attributes.sha1, response.data[0].attributes.sha256))
             
         } catch(err){
-            showHash(hash,"no data","no data");
+            showHash("Not Found: "+hash+"</span>","no data❗","no data❗", "no data❗");
         }
 
         document.body.style.cursor='default';
@@ -66,6 +69,11 @@ document.addEventListener('DOMContentLoaded', function(){
             readCSV(getFile.result)
         }
         getFile.readAsText(file);
+    })
+
+    document.querySelector("#save").addEventListener('click', function(){
+        console.log("Saved");
+        localStorage.setItem('vtkey', document.getElementById('vtkey').value);
     })
 
 })
